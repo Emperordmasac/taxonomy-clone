@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+  <br/>
+  <h1 align="center">Taxonomy-Clone</h1>
+	<p align="center">An application built using the new router, server components and everything new in Next.js 13.</p>
+</p>
 
-## Getting Started
+> This app is a copy/clone of the work of [@shadcn](https://twitter.com). You can follow the progress on Twitter 
 
-First, run the development server:
+## Demo
 
-```bash
-npm run dev
-# or
+See https://www.youtube.com/watch?v=G5vCj8wWkuc
+
+## Features
+
+- New `/app` dir,
+- Routing, Layouts, Nested Layouts and Layout Groups.
+- Data fetching, Caching and Mutation.
+- Loading UI,
+- Server and Client Components.
+- API Routes and Middlewares.
+- Authentication using **NextAuth.js**.
+- ORM using **Prisma**.
+- UI Components built using **Radix UI**.
+- Styled using **Tailwind CSS**.
+- Validations using **Zod**.
+- Written in **TypeScript**.
+
+## Roadmap
+
+> This app is a copy/clone of the work of [@shadcn](https://twitter.com). You can follow the progress on Twitter 
+
+- Responsive styles.
+- Subscriptions using Stripe.
+- Add Media Library.
+- Add Pages.
+- Build the front-end for blogs.
+- Add support for custom domains for blogs.
+- Build marketing pages (use a headless CMS?)
+- Add MDX support for basic pages.
+- Add OG image for blog using @vercel/og.
+- Dark mode.
+
+
+## Why not trpc, Turborepo, pnpm or X?
+
+I might add this later. For now, I want to see how far we can get using Next.js only.
+
+If you have some suggestions, feel free to create an issue.
+
+## Running Locally
+
+1. Install dependencies using Yarn:
+
+```sh
+yarn
+```
+
+2. Copy `.env.example` to `.env.local` and update the variables.
+
+3. Start the development server:
+
+```sh
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## License
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Licensed under the [MIT license](https://github.com/reflexjs/reflex/blob/master/LICENSE).
