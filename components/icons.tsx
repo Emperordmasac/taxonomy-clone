@@ -1,4 +1,17 @@
-import { Command, ArrowRight, ChevronLeft, Loader2 } from "lucide-react";
+import {
+  Command,
+  ArrowRight,
+  ChevronLeft,
+  Loader2,
+  FileText,
+  Image,
+  File,
+  Settings,
+  User,
+  MoreVertical,
+  Plus,
+  Trash,
+} from "lucide-react";
 
 import type { Icon as lucideIcon } from "lucide-react";
 
@@ -9,4 +22,12 @@ export const Icons = {
   arrowRight: ArrowRight,
   chevronLeft: ChevronLeft,
   spinner: Loader2,
+  post: FileText,
+  page: File,
+  media: Image,
+  settings: Settings,
+  user: User,
+  ellipsis: MoreVertical,
+  add: Plus,
+  trash: Trash,
 };
