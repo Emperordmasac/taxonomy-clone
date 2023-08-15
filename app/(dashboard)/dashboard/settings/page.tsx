@@ -20,7 +20,7 @@ export default async function SettingsPage() {
   const user = await getUser();
 
   if (!user) {
-    return notFound();
+    notFound();
   }
 
   return (
