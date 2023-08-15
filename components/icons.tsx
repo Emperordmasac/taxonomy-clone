@@ -11,6 +11,7 @@ import {
   MoreVertical,
   Plus,
   Trash,
+  AlertTriangle,
 } from "lucide-react";
 
 import type { Icon as lucideIcon } from "lucide-react";
@@ -30,4 +31,5 @@ export const Icons = {
   ellipsis: MoreVertical,
   add: Plus,
   trash: Trash,
+  warning: AlertTriangle,
 };
