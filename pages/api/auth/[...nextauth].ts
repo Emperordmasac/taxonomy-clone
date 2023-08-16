@@ -15,7 +15,10 @@ import { db } from '@/lib/db'
 const prisma = new PrismaClient()
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  // huh any! I know.
+  // This is a temporary fix for prisma client.
+  // @see https://github.com/prisma/prisma/issues/16117
+  adapter: PrismaAdapter(prisma as any),
   pages: {
     signIn: '/login',
   },
