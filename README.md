@@ -26,4 +26,3 @@ An open source application built using the new router, server components and eve
 A list of things not working right now:
 
 1. GitHub authentication (use email)
-2. NextAuth.js middleware (getSession not updated to work with Next.js 13)
