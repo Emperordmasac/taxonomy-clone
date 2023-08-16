@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import Image, { ImageProps } from "next/image";
 
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 
@@ -9,7 +8,7 @@ export function Avatar({ className, ...props }: AvatarProps) {
   return (
     <AvatarPrimitive.Root
       className={cn(
-        "flex h-[48px] w-[48px] items-center justify-center overflow-hidden rounded-full bg-slate-100",
+        "flex h-[32px] w-[32px] items-center justify-center overflow-hidden rounded-full bg-slate-100",
         className
       )}
       {...props}
