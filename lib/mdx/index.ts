@@ -27,7 +27,7 @@ interface MdxFileData<TFrontmatter> {
   raw: string
   hash: string
   frontMatter: TFrontmatter
-  content: String
+  content: string
 }
 
 export function createSource<T extends z.ZodType>(source: Source<T>) {
