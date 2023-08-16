@@ -12,6 +12,8 @@ import {
   Plus,
   Trash,
   AlertTriangle,
+  HelpCircle,
+  Pizza,
 } from "lucide-react";
 
 import type { Icon as lucideIcon } from "lucide-react";
@@ -32,4 +34,6 @@ export const Icons = {
   add: Plus,
   trash: Trash,
   warning: AlertTriangle,
+  help: HelpCircle,
+  pizza: Pizza,
 };
