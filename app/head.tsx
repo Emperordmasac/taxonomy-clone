@@ -8,6 +8,24 @@ export default function Head() {
         name="description"
         content="An application built using the new router, server components and everything new in Next.js 13."
       />
+      <meta property="og:type" content="website" />
+      <meta
+        property="og:url"
+        content="https://taxonomy-clone-indol.vercel.app"
+      />
+      <meta
+        property="og:image"
+        content="https://taxonomy-clone-indol.vercel.app/og.jpg"
+      />
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta
+        property="twitter:url"
+        content="https://taxonomy-clone-indol.vercel.app"
+      />
+      <meta
+        property="twitter:image"
+        content="https://taxonomy-clone-indol.vercel.app/og.jpg"
+      />
     </>
   );
 }
