@@ -4419,6 +4419,15 @@ vfile-matter@^3.0.1:
     is-buffer "^2.0.0"
     js-yaml "^4.0.0"
 
+vfile-matter@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/vfile-matter/-/vfile-matter-4.0.1.tgz#33a1aeace7feacb06e649cba47a342a8f59718d4"
+  integrity sha512-ZeACdaxCOxhePpoLO4A5y/VgI9EuWBXu+sUk65aQ7lXBZDFg7X0tuOzigLJUtsQzazFt6K2m9SdlDxZdfL5vVg==
+  dependencies:
+    is-buffer "^2.0.0"
+    vfile "^5.0.0"
+    yaml "^2.0.0"
+
 vfile-message@^3.0.0:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/vfile-message/-/vfile-message-3.1.4.tgz#15a50816ae7d7c2d1fa87090a7f9f96612b59dea"
@@ -4427,7 +4436,7 @@ vfile-message@^3.0.0:
     "@types/unist" "^2.0.0"
     unist-util-stringify-position "^3.0.0"
 
-vfile@^5.0.0, vfile@^5.3.0:
+vfile@^5.0.0, vfile@^5.3.0, vfile@^5.3.5:
   version "5.3.7"
   resolved "https://registry.yarnpkg.com/vfile/-/vfile-5.3.7.tgz#de0677e6683e3380fafc46544cfe603118826ab7"
   integrity sha512-r7qlzkgErKjobAmyNIkkSpizsFPYiUPuJb5pNW1RB4JcYVZhs4lIbVqk8XPk033CV/1z8ss5pkax8SuhGpcG8g==
@@ -4476,7 +4485,7 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@^2.1.1:
+yaml@^2.0.0, yaml@^2.1.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.3.1.tgz#02fe0975d23cd441242aa7204e09fc28ac2ac33b"
   integrity sha512-2eHWfjaoXgTBC2jNM1LRef62VQa0umtvRiDSk6HSzW7RvS5YtkabJrwYLLEKWBc8a5U2PTSCs+dJjUTJdlHsWQ==
