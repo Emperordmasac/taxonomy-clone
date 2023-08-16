@@ -29,20 +29,21 @@
       "@/styles/*": [
         "styles/*"
       ],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/prisma/*": [
+        "prisma/*"
+      ]
     },
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".contentlayer/generated"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

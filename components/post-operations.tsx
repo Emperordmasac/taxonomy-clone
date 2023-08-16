@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { Post } from "@prisma/client";
+import { Post } from "@/lib/prisma";
 
 import { DropdownMenu } from "@/components/ui/dropdown";
 import { Icons } from "@/components/icons";
