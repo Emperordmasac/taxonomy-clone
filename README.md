@@ -20,6 +20,7 @@ An open source application built using the new router, server components and eve
 - [ ] Build marketing pages (use a headless CMS?)
 - [ ] Add OG image for blog using @vercel/og.
 - [ ] Dark mode.
+- [ ] Move Ui from components
 
 ## Known Issues
 
