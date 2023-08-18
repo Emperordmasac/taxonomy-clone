@@ -1,10 +1,11 @@
-import { notFound } from "next/navigation";
-import { headers } from "next/headers";
+import { notFound, redirect } from "next/navigation";
+
 import { Post, User } from "@/lib/prisma";
+import { db } from "@/lib/db";
+import { getCurrentUser } from "@/lib/session";
+import { authOptions } from "@/lib/auth";
 
 import { Editor } from "@/components/editor";
-import { db } from "@/lib/db";
-import { getSession } from "@/lib/session";
 
 async function getPostForUser(postId: Post["id"], userId: User["id"]) {
   return await db.post.findFirst({
@@ -20,8 +21,13 @@ interface EditorPageProps {
 }
 
 export default async function EditorPage({ params }: EditorPageProps) {
-  const session = await getSession(headers().get("cookie"));
-  const post = await getPostForUser(params.postId, session?.user.id);
+  const user = await getCurrentUser();
+
+  if (!user) {
+    return redirect(authOptions.pages.signIn);
+  }
+
+  const post = await getPostForUser(params.postId, user.id);
 
   if (!post) {
     notFound();
