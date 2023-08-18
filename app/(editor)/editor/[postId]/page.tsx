@@ -1,9 +1,8 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 import { Post, User } from "@/lib/prisma";
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/session";
-import { authOptions } from "@/lib/auth";
 
 import { Editor } from "@/components/editor";
 
@@ -22,10 +21,6 @@ interface EditorPageProps {
 
 export default async function EditorPage({ params }: EditorPageProps) {
   const user = await getCurrentUser();
-
-  if (!user) {
-    redirect(authOptions.pages.signIn);
-  }
 
   const post = await getPostForUser(params.postId, user.id);
 

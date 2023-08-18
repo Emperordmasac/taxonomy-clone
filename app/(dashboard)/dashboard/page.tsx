@@ -1,7 +1,5 @@
-import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/session";
 import { User } from "@/lib/prisma";
-import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 
 import { DashboardHeader } from "@/components/dashboard-header";
@@ -29,10 +27,6 @@ async function getPostsForUser(userId: User["id"]) {
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
-
-  if (!user) {
-    redirect(authOptions.pages.signIn);
-  }
 
   const posts = await getPostsForUser(user.id);
 
