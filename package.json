@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
+    "turbo": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -34,11 +35,12 @@
     "@radix-ui/react-toggle": "^1.0.0",
     "@vercel/analytics": "^0.1.3",
     "clsx": "^1.2.1",
-    "fast-glob": "^3.2.12",
-    "hasha": "^5.2.2",
+    "contentlayer": "^0.2.9",
+    "date-fns": "^2.29.3",
     "lucide-react": "^0.92.0",
-    "next": "13.0.1",
+    "next": "^13.0.3",
     "next-auth": "^4.16.4",
+    "next-contentlayer": "^0.2.9",
     "next-mdx-remote": "^4.1.0",
     "node-cache": "^5.1.2",
     "nodemailer": "^6.8.0",
@@ -52,10 +54,9 @@
     "react-hot-toast": "^2.4.0",
     "react-textarea-autosize": "^8.3.4",
     "sharp": "^0.31.1",
+    "shiki": "^0.11.1",
     "tailwind-merge": "^1.6.2",
     "tailwindcss-animate": "^1.0.5",
-    "vfile": "^5.3.5",
-    "vfile-matter": "^4.0.0",
     "zod": "^3.19.1"
   },
   "devDependencies": {
@@ -66,11 +67,19 @@
     "autoprefixer": "^10.4.8",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
+    "mdast-util-toc": "^6.1.0",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "prisma": "^4.5.0",
+    "rehype": "^12.0.1",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-pretty-code": "^0.5.0",
+    "rehype-slug": "^5.1.0",
+    "remark": "^14.0.2",
+    "remark-gfm": "^3.0.1",
     "tailwindcss": "^3.1.7",
-    "typescript": "4.7.4"
+    "typescript": "4.7.4",
+    "unist-util-visit": "^4.1.1"
   }
 }
