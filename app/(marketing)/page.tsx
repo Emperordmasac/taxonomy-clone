@@ -1,29 +1,7 @@
 import Link from "next/link";
-import { toWords } from "number-to-words";
 import { Icons } from "@/components/icons";
 
-async function getGitHubStars(): Promise<string | null> {
-  const response = await fetch(
-    "https://github.com/Emperordmasac/taxonomy-clone",
-    {
-      next: {
-        revalidate: 60,
-      },
-    }
-  );
-
-  if (!response?.ok) {
-    return null;
-  }
-
-  const json = await response.json();
-
-  return toWords(json["stargazers_count"]);
-}
-
-export default async function IndexPage() {
-  const stars = await getGitHubStars();
-
+export default function IndexPage() {
   return (
     <>
       <section className="container grid items-center justify-center gap-6 pt-8 md:pt-12 lg:pt-24">
@@ -195,9 +173,6 @@ export default async function IndexPage() {
             </Link>
           </p>
         </div>
-        <h3 className="inline-flex items-center gap-2 text-lg font-medium capitalize md:text-xl">
-          <span>{stars} stars on GitHub</span>
-        </h3>
       </section>
       <div className="md:py-18 container py-12 lg:py-24">
         <hr className="border-slate-100" />
