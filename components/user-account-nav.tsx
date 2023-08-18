@@ -3,7 +3,7 @@
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 
-import { DropdownMenu } from "@/components/ui/dropdown";
+import { DropdownMenu } from "@/ui/dropdown";
 import { UserAvatar } from "@/components/user-avatar";
 import Link from "next/link";
 
