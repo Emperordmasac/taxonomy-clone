@@ -24,7 +24,7 @@ export default async function DashboardLayout({
       <header className="flex h-[64px] items-center justify-between pl-2">
         <Link href="/" className="flex items-center space-x-2">
           <Icons.logo />
-          <span className="text-lg font-bold">Taxonomy</span>
+          <span className="text-lg font-bold">Pavilion</span>
         </Link>
         <UserAccountNav
           user={{

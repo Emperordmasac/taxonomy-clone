@@ -11,21 +11,15 @@ export default function Head() {
       <meta property="og:type" content="website" />
       <meta
         property="og:url"
-        content="https://taxonomy-clone-indol.vercel.app"
+        content="https://pavilion-nv.vercel.app.vercel.app"
       />
       <meta
         property="og:image"
-        content="https://taxonomy-clone-indol.vercel.app/og.jpg"
+        content="https://pavilion-nv.vercel.app/og.jpg"
       />
       <meta property="twitter:card" content="summary_large_image" />
-      <meta
-        property="twitter:url"
-        content="https://taxonomy-clone-indol.vercel.app"
-      />
-      <meta
-        property="twitter:image"
-        content="https://taxonomy-clone-indol.vercel.app/og.jpg"
-      />
+      <meta property="twitter:url" content="https://pavilion-nv.vercel.app" />
+      <meta property="twitter:image" content="https://pavilion-nv.app/og.jpg" />
     </>
   );
 }
