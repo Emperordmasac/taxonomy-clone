@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import { Post } from "@prisma/client";
-import { PostOperations } from "@/components/post-operations";
+import { PostOperations } from "@/components/dashboard/post-operations";
 import { Skeleton } from "@/ui/skeleton";
 
 interface PostItemProps {

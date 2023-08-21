@@ -1,19 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
-import { Icon, Icons } from "@/components/icons";
+import { NavItem } from "types";
+import { cn } from "@/lib/utils";
+import { Icons } from "@/components/icons";
 
-export type NavigationItem = {
-  title: string;
-  href: string;
-  disabled?: boolean;
-  icon?: Icon;
-};
-
-export const navigationItems: NavigationItem[] = [
+export const navigationItems: NavItem[] = [
   {
     title: "Posts",
     href: "/dashboard",
@@ -49,7 +43,7 @@ export function DashboardNav() {
           href={navigationItem.disabled ? "/" : navigationItem.href}
         >
           <span
-            className={clsx(
+            className={cn(
               "group flex items-center rounded-md px-3 py-2 text-sm font-medium text-slate-800 hover:bg-slate-100",
               path === navigationItem.href ? "bg-slate-200" : "transparent",
               navigationItem.disabled && "cursor-not-allowed opacity-50"

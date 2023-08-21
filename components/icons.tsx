@@ -2,6 +2,7 @@ import {
   Command,
   ArrowRight,
   ChevronLeft,
+  ChevronRight,
   Loader2,
   FileText,
   Image,
@@ -15,6 +16,8 @@ import {
   HelpCircle,
   Pizza,
   Github,
+  X,
+  Twitter,
 } from "lucide-react";
 
 import type { Icon as lucideIcon } from "lucide-react";
@@ -25,6 +28,7 @@ export const Icons = {
   logo: Command,
   arrowRight: ArrowRight,
   chevronLeft: ChevronLeft,
+  chevronRight: ChevronRight,
   spinner: Loader2,
   post: FileText,
   page: File,
@@ -37,5 +41,7 @@ export const Icons = {
   warning: AlertTriangle,
   help: HelpCircle,
   pizza: Pizza,
-  github: Github,
+  gitHub: Github,
+  close: X,
+  twitter: Twitter,
 };

@@ -4,7 +4,8 @@ import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 
 import { DropdownMenu } from "@/ui/dropdown";
-import { UserAvatar } from "@/components/user-avatar";
+import { UserAvatar } from "@/components/dashboard/user-avatar";
+import { siteConfig } from "@/config/site";
 import Link from "next/link";
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -43,7 +44,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           <DropdownMenu.Separator />
           <DropdownMenu.Item>
             <Link
-              href="https://github.com/Emperordmasac"
+              href={siteConfig.links.github}
               className="w-full"
               target="_blank"
             >
