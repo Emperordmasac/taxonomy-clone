@@ -3,9 +3,8 @@
 An open source application built using the new router, server components and everything new in Next.js 13 (a clone of shadcn-ui Taxonomy Project)
 
 > **Warning**
-> This app is a work in progress. 
+> This app is a work in progress.
 > See the roadmap below.
-
 
 ## Features
 
@@ -24,7 +23,6 @@ An open source application built using the new router, server components and eve
 - Validations using **Zod**.
 - Written in **TypeScript**.
 
-
 ## Roadmap
 
 > **Warning**
@@ -33,18 +31,18 @@ An open source application built using the new router, server components and eve
 - [x] ~Add MDX support for basic pages~
 - [x] ~Build marketing pages~
 - [x] ~Subscriptions using Stripe~
-- [x] Responsive styles
+- [x] ~Responsive styles~
 - [ ] Add OG image for blog using @vercel/og
 - [ ] Dark mode
 
 ## Known Issues
 
 A list of things not working right now:
+
 1. ~GitHub authentication (use email)~
 
 2. ~[Prisma: Error: ENOENT: no such file or directory, open '/var/task/.next/server/chunks/schema.prisma'](https://github.com/prisma/prisma/issues/16117)~
 3. ~[Next.js 13: Client side navigation does not update head](https://github.com/vercel/next.js/issues/42414)~
-
 
 ## Running Locally
 
