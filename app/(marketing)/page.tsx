@@ -8,7 +8,7 @@ export default function IndexPage() {
   return (
     <>
       <section className="container grid items-center justify-center gap-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:pb-24 lg:pt-16">
-        <Image src={hero} width={250} alt="Hero image" />
+        <Image src={hero} width={250} alt="Hero image" priority />
         <div className="mx-auto flex flex-col items-start gap-4 lg:w-[52rem]">
           <h1 className="text-3xl font-bold leading-[1.1] tracking-tighter sm:text-5xl md:text-6xl">
             What&apos;s going on here?
@@ -158,9 +158,9 @@ export default function IndexPage() {
             >
               GitHub
             </Link>
-            . I&apos;m also documenting everything{" "}
+            .
             <Link href="/docs" className="underline underline-offset-4">
-              here
+              I&apos;m also documenting everything here
             </Link>
             .
           </p>
