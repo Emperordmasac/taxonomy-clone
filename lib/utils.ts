@@ -13,3 +13,8 @@ export function formatDate(input: string): string {
     year: 'numeric',
   })
 }
+
+// Since we're already setting NEXTAUTH_URL, we can use same to create absolute URLs.
+export function absoluteUrl(path: string) {
+  return `${process.env.NEXTAUTH_URL}${path}`
+}
