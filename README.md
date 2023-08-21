@@ -30,16 +30,12 @@ An open source application built using the new router, server components and eve
 > **Warning**
 > This app is a work in progress
 
-- [x] ~Add MDX support for basic pages.~
-- [ ] Responsive styles.
-- [ ] Subscriptions using Stripe.
-- [ ] Add Media Library.
-- [ ] Add Pages.
-- [ ] Build the front-end for blogs.
-- [ ] Add support for custom domains for blogs.
-- [ ] Build marketing pages (use a headless CMS?)
-- [ ] Add OG image for blog using @vercel/og.
-- [ ] Dark mode.
+- [x] ~Add MDX support for basic pages~
+- [x] ~Build marketing pages~
+- [x] ~Subscriptions using Stripe~
+- [x] Responsive styles
+- [ ] Add OG image for blog using @vercel/og
+- [ ] Dark mode
 
 ## Known Issues
 
