@@ -18,7 +18,8 @@ import {
   Github,
   X,
   Twitter,
-  CreditCard
+  CreditCard,
+  Check,
 } from "lucide-react";
 
 import type { Icon as lucideIcon } from "lucide-react";
@@ -46,4 +47,5 @@ export const Icons = {
   close: X,
   twitter: Twitter,
   billing: CreditCard,
+  check: Check,
 };
