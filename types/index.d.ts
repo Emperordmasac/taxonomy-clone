@@ -1,4 +1,4 @@
-import type { Icon } from 'lucide-react'
+import type { Icon } from "lucide-react"
 
 export type NavItem = {
   title: string
@@ -6,7 +6,7 @@ export type NavItem = {
   disabled?: boolean
 }
 
-export type MainNavItem = Pick<NavItem, 'title' | 'href' | 'disabled'>
+export type MainNavItem = Pick<NavItem, "title" | "href" | "disabled">
 
 export type SidebarNavItem = {
   title: string
@@ -53,8 +53,7 @@ export type SubscriptionPlan = {
 }
 
 export type UserSubscriptionPlan = SubscriptionPlan &
-  Pick<User, 'stripeCustomerId' | 'stripeSubscriptionId'> & {
+  Pick<User, "stripeCustomerId" | "stripeSubscriptionId"> & {
     stripeCurrentPeriodEnd: number
     isPro: boolean
-    isCanceled: boolean
   }

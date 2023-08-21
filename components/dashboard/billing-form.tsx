@@ -1,15 +1,17 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { UserSubscriptionPlan } from "types";
-import { cn, formatDate } from "@/lib/utils";
-import { Card } from "@/ui/card";
-import { toast } from "@/ui/toast";
-import { Icons } from "@/components/icons";
+import { UserSubscriptionPlan } from "types"
+import { cn, formatDate } from "@/lib/utils"
+import { Card } from "@/ui/card"
+import { toast } from "@/ui/toast"
+import { Icons } from "@/components/icons"
 
 interface BillingFormProps extends React.HTMLAttributes<HTMLFormElement> {
-  subscriptionPlan: UserSubscriptionPlan;
+  subscriptionPlan: UserSubscriptionPlan & {
+    isCanceled: boolean
+  }
 }
 
 export function BillingForm({
@@ -17,29 +19,29 @@ export function BillingForm({
   className,
   ...props
 }: BillingFormProps) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   async function onSubmit() {
-    event.preventDefault();
-    setIsLoading(!isLoading);
+    event.preventDefault()
+    setIsLoading(!isLoading)
 
     // Get a Stripe session URL.
-    const response = await fetch("/api/users/stripe");
+    const response = await fetch("/api/users/stripe")
 
     if (!response?.ok) {
       return toast({
         title: "Something went wrong.",
         message: "Please refresh the page and try again.",
         type: "error",
-      });
+      })
     }
 
     // Redirect to the Stripe session.
     // This could be a checkout page for initial upgrade.
     // Or portal to manage existing subscription.
-    const session = await response.json();
+    const session = await response.json()
     if (session) {
-      window.location.href = session.url;
+      window.location.href = session.url
     }
   }
 
@@ -81,5 +83,5 @@ export function BillingForm({
         </Card.Footer>
       </Card>
     </form>
-  );
+  )
 }

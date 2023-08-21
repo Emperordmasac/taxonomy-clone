@@ -1,26 +1,26 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { User } from "@prisma/client";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
+import * as React from "react"
+import { User } from "@prisma/client"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
 
-import { cn } from "@/lib/utils";
-import { userNameSchema } from "@/lib/validations/user";
-import { Card } from "@/ui/card";
-import { Icons } from "@/components/icons";
-import { toast } from "@/ui/toast";
+import { cn } from "@/lib/utils"
+import { userNameSchema } from "@/lib/validations/user"
+import { Card } from "@/ui/card"
+import { Icons } from "@/components/icons"
+import { toast } from "@/ui/toast"
 
 interface UserNameFormProps extends React.HTMLAttributes<HTMLFormElement> {
-  user: Pick<User, "id" | "name">;
+  user: Pick<User, "id" | "name">
 }
 
-type FormData = z.infer<typeof userNameSchema>;
+type FormData = z.infer<typeof userNameSchema>
 
 export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
-  const router = useRouter();
+  const router = useRouter()
   const {
     handleSubmit,
     register,
@@ -28,36 +28,39 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
   } = useForm<FormData>({
     resolver: zodResolver(userNameSchema),
     defaultValues: { name: user.name },
-  });
+  })
 
-  const [isSaving, setIsSaving] = React.useState<boolean>(false);
+  const [isSaving, setIsSaving] = React.useState<boolean>(false)
 
   async function onSubmit(data: FormData) {
-    setIsSaving(true);
+    setIsSaving(true)
 
     const response = await fetch(`/api/users/${user.id}`, {
       method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name: data.name,
       }),
-    });
+    })
 
-    setIsSaving(false);
+    setIsSaving(false)
 
     if (!response?.ok) {
       return toast({
         title: "Something went wrong.",
         message: "Your name was not updated. Please try again.",
         type: "error",
-      });
+      })
     }
 
     toast({
       message: "Your name has been updated.",
       type: "success",
-    });
+    })
 
-    router.refresh();
+    router.refresh()
   }
 
   return (
@@ -111,5 +114,5 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
         </Card.Footer>
       </Card>
     </form>
-  );
+  )
 }
