@@ -54,10 +54,10 @@ If you have some suggestions, feel free to create an issue.
 
 ## Running Locally
 
-1. Install dependencies using Yarn:
+1. Install dependencies using pnpm::
 
 ```sh
-yarn
+pnpm install
 ```
 
 2. Copy `.env.example` to `.env.local` and update the variables.
@@ -65,7 +65,7 @@ yarn
 3. Start the development server:
 
 ```sh
-yarn dev
+pnpm dev
 ```
 
 ## License
