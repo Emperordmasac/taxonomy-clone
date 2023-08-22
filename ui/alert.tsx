@@ -1,23 +1,23 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
-import * as AlertDialogPrimitives from "@radix-ui/react-alert-dialog";
+import * as React from "react"
+import { cn } from "@/lib/utils"
+import * as AlertDialogPrimitives from "@radix-ui/react-alert-dialog"
 
-type AlertProps = AlertDialogPrimitives.AlertDialogProps;
+type AlertProps = AlertDialogPrimitives.AlertDialogProps
 
 export function Alert({ ...props }: AlertProps) {
-  return <AlertDialogPrimitives.Root {...props} />;
+  return <AlertDialogPrimitives.Root {...props} />
 }
 
 Alert.Trigger = React.forwardRef<
   HTMLButtonElement,
   AlertDialogPrimitives.AlertDialogTriggerProps
 >(function AlertTrigger({ ...props }, ref) {
-  return <AlertDialogPrimitives.Trigger {...props} ref={ref} />;
-});
+  return <AlertDialogPrimitives.Trigger {...props} ref={ref} />
+})
 
-Alert.Portal = AlertDialogPrimitives.Portal;
+Alert.Portal = AlertDialogPrimitives.Portal
 
 Alert.Content = React.forwardRef<
   HTMLDivElement,
@@ -25,7 +25,7 @@ Alert.Content = React.forwardRef<
 >(function AlertContent({ className, ...props }, ref) {
   return (
     <Alert.Portal>
-      <AlertDialogPrimitives.Overlay className="fixed inset-0 z-20 bg-black/50 opacity-100 transition-opacity animate-in fade-in">
+      <AlertDialogPrimitives.Overlay className="fixed inset-0 z-40 bg-black/50 opacity-100 transition-opacity animate-in fade-in">
         <div className="fixed inset-0 z-40 flex items-center justify-center">
           <AlertDialogPrimitives.Content
             ref={ref}
@@ -38,14 +38,14 @@ Alert.Content = React.forwardRef<
         </div>
       </AlertDialogPrimitives.Overlay>
     </Alert.Portal>
-  );
-});
+  )
+})
 
-type AlertHeaderProps = React.HTMLAttributes<HTMLDivElement>;
+type AlertHeaderProps = React.HTMLAttributes<HTMLDivElement>
 
 Alert.Header = function AlertHeader({ className, ...props }: AlertHeaderProps) {
-  return <div className={cn("grid gap-1", className)} {...props} />;
-};
+  return <div className={cn("grid gap-1", className)} {...props} />
+}
 
 Alert.Title = React.forwardRef<
   HTMLHeadingElement,
@@ -57,8 +57,8 @@ Alert.Title = React.forwardRef<
       className={cn("text-lg font-semibold text-slate-900", className)}
       {...props}
     />
-  );
-});
+  )
+})
 
 Alert.Description = React.forwardRef<
   HTMLParagraphElement,
@@ -70,14 +70,14 @@ Alert.Description = React.forwardRef<
       className={cn("text-sm text-neutral-500", className)}
       {...props}
     />
-  );
-});
+  )
+})
 
 Alert.Footer = function AlertFooter({ className, ...props }: AlertHeaderProps) {
   return (
     <div className={cn("flex justify-end space-x-2", className)} {...props} />
-  );
-};
+  )
+}
 
 Alert.Cancel = React.forwardRef<
   HTMLButtonElement,
@@ -92,8 +92,8 @@ Alert.Cancel = React.forwardRef<
       )}
       {...props}
     />
-  );
-});
+  )
+})
 
 Alert.Action = React.forwardRef<
   HTMLButtonElement,
@@ -108,5 +108,5 @@ Alert.Action = React.forwardRef<
       )}
       {...props}
     />
-  );
-});
+  )
+})
