@@ -1,29 +1,27 @@
-import { notFound } from "next/navigation";
-import { allPages } from "contentlayer/generated";
+import { notFound } from "next/navigation"
+import { allPages } from "contentlayer/generated"
 
-import { Mdx } from "@/components/docs/mdx";
-import "@/styles/mdx.css";
-
-import { serialize } from "next-mdx-remote/serialize";
+import { Mdx } from "@/components/docs/mdx"
+import "@/styles/mdx.css"
 
 interface PageProps {
   params: {
-    slug: string[];
-  };
+    slug: string[]
+  }
 }
 
 export async function generateStaticParams(): Promise<PageProps["params"][]> {
   return allPages.map((page) => ({
     slug: page.slugAsParams.split("/"),
-  }));
+  }))
 }
 
 export default async function BasicPage({ params }: PageProps) {
-  const slug = params?.slug?.join("/");
-  const page = allPages.find((page) => page.slugAsParams === slug);
+  const slug = params?.slug?.join("/")
+  const page = allPages.find((page) => page.slugAsParams === slug)
 
   if (!page) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -39,5 +37,5 @@ export default async function BasicPage({ params }: PageProps) {
       <hr className="my-4 border-slate-200" />
       <Mdx code={page.body.code} />
     </article>
-  );
+  )
 }
