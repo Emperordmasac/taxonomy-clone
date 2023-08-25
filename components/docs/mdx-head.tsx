@@ -1,15 +1,13 @@
 import * as z from "zod"
 import { allDocuments } from "contentlayer/generated"
-import { ogImageSchema } from "@/lib/validations/og"
 
 interface MdxHeadProps {
   params: {
     slug?: string[]
   }
-  og?: z.infer<typeof ogImageSchema>
 }
 
-export default function MdxHead({ params, og }: MdxHeadProps) {
+export default function MdxHead({ params }: MdxHeadProps) {
   const slug = params?.slug?.join("/") || ""
   const mdxDoc = allDocuments.find((doc) => doc.slugAsParams === slug)
 
@@ -18,14 +16,6 @@ export default function MdxHead({ params, og }: MdxHeadProps) {
   }
 
   const title = `${mdxDoc.title} - Pavilion`
-  const url = process.env.NEXT_PUBLIC_APP_URL
-  let ogUrl = new URL(`${url}/og.jpg`)
-
-  if (og?.type) {
-    ogUrl = new URL(url)
-    ogUrl.searchParams.set("heading", mdxDoc.title)
-    ogUrl.searchParams.set("type", og.type)
-  }
 
   return (
     <>
@@ -35,11 +25,20 @@ export default function MdxHead({ params, og }: MdxHeadProps) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={url} />
-        <meta property="og:image" content={ogUrl.toString()} />
+        <meta property="og:url" content="https://pavilion-nv.vercel.app/" />
+        <meta
+          property="og:image"
+          content="https://pavilion-nv.vercel.app/og.jpg"
+        />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={url} />
-        <meta property="twitter:image" content={ogUrl.toString()} />
+        <meta
+          property="twitter:url"
+          content="https://pavilion-nv.vercel.app/"
+        />
+        <meta
+          property="twitter:image"
+          content="https://pavilion-nv.vercel.app/og.jpg"
+        />
       </>
     </>
   )
