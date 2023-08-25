@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { useSearchParams } from "next/navigation";
-import { signIn } from "next-auth/react";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import * as React from "react"
+import { useSearchParams } from "next/navigation"
+import { signIn } from "next-auth/react"
+import * as z from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 
-import { cn } from "@/lib/utils";
-import { userAuthSchema } from "@/lib/validations/auth";
-import { toast } from "@/ui/toast";
-import { Icons } from "@/components/icons";
+import { cn } from "@/lib/utils"
+import { userAuthSchema } from "@/lib/validations/auth"
+import { toast } from "@/ui/toast"
+import { Icons } from "@/components/icons"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-type FormData = z.infer<typeof userAuthSchema>;
+type FormData = z.infer<typeof userAuthSchema>
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const {
@@ -23,35 +23,35 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(userAuthSchema),
-  });
+  })
 
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const searchParams = useSearchParams();
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const searchParams = useSearchParams()
 
   async function onSubmit(data: FormData) {
-    setIsLoading(true);
+    setIsLoading(true)
 
     const signInResult = await signIn("email", {
       email: data.email.toLowerCase(),
       redirect: false,
       callbackUrl: searchParams.get("from") || "/dashboard",
-    });
+    })
 
-    setIsLoading(false);
+    setIsLoading(false)
 
     if (!signInResult?.ok) {
       return toast({
         title: "Something went wrong.",
-        message: "Your post was not saved. Please try again.",
+        message: "Your sign in request failed. Please try again.",
         type: "error",
-      });
+      })
     }
 
     return toast({
       title: "Check your email",
       message: "We sent you a login link. Be sure to check your spam too.",
       type: "success",
-    });
+    })
   }
 
   return (
@@ -65,7 +65,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             <input
               id="email"
               placeholder="name@example.com"
-              className="my-0 mb-2 block h-9 w-full rounded-md border border-slate-300 px-3 py-2 text-sm placeholder:text-slate-400 hover:border-slate-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1"
+              className="block w-full px-3 py-2 my-0 mb-2 text-sm border rounded-md h-9 border-slate-300 placeholder:text-slate-400 hover:border-slate-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1"
               type="email"
               autoCapitalize="none"
               autoComplete="email"
@@ -85,7 +85,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             disabled={isLoading}
           >
             {isLoading && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              <Icons.spinner className="w-4 h-4 mr-2 animate-spin" />
             )}
             Sign In with Email
           </button>
@@ -96,7 +96,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           <div className="w-full border-t border-slate-300"></div>
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-white px-2 text-slate-600">Or continue with</span>
+          <span className="px-2 bg-white text-slate-600">Or continue with</span>
         </div>
       </div>
       <button
@@ -106,7 +106,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         onClick={() => signIn("github")}
       >
         <svg
-          className="mr-2 h-4 w-4"
+          className="w-4 h-4 mr-2"
           aria-hidden="true"
           focusable="false"
           data-prefix="fab"
@@ -123,5 +123,5 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         Github
       </button>
     </div>
-  );
+  )
 }
