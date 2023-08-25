@@ -1,10 +1,10 @@
-import * as React from "react";
-import Image from "next/image";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import * as React from "react"
+import Image from "next/image"
+import { useMDXComponent } from "next-contentlayer/hooks"
 
-import { cn } from "@/lib/utils";
-import { Callout } from "@/components/docs/callout";
-import { Card } from "@/components/docs/card";
+import { cn } from "@/lib/utils"
+import { Callout } from "@/components/docs/callout"
+import { Card } from "@/components/docs/card"
 
 const components = {
   h1: ({ className, ...props }) => (
@@ -110,7 +110,7 @@ const components = {
     <hr className="my-4 border-slate-200 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-y-auto">
+    <div className="w-full my-6 overflow-y-auto">
       <table className={cn("w-full", className)} {...props} />
     </div>
   ),
@@ -144,7 +144,7 @@ const components = {
   pre: ({ className, ...props }) => (
     <pre
       className={cn(
-        "mb-4 mt-6 overflow-x-auto rounded-lg bg-slate-50 py-4",
+        "mb-4 mt-6 overflow-x-auto rounded-lg bg-slate-900 py-4",
         className
       )}
       {...props}
@@ -162,18 +162,18 @@ const components = {
   Image,
   Callout,
   Card,
-};
+}
 
 interface MdxProps {
-  code: string;
+  code: string
 }
 
 export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code);
+  const Component = useMDXComponent(code)
 
   return (
     <div className="mdx">
       <Component components={components} />
     </div>
-  );
+  )
 }
