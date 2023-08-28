@@ -33,7 +33,7 @@ Avatar.Image = function AvatarImage({
   return (
     <Image
       src={src}
-      className={cn("", className)}
+      className={cn("object-cover", className)}
       alt={alt}
       width={width}
       height={height}
