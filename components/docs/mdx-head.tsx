@@ -30,13 +30,13 @@ export default function MdxHead({ params }: MdxHeadProps) {
           property="og:image"
           content="https://pavilion-nv.vercel.app/og.jpg"
         />
-        <meta property="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
           content="https://pavilion-nv.vercel.app/"
         />
         <meta
-          property="twitter:image"
+          name="twitter:image"
           content="https://pavilion-nv.vercel.app/og.jpg"
         />
       </>

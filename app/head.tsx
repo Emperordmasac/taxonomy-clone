@@ -18,10 +18,10 @@ export default function Head() {
         property="og:image"
         content="https://pavilion-nv.vercel.app/og.jpg"
       />
-      <meta property="twitter:title" content="Pavilion" />
-      <meta property="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Pavilion" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://pavilion-nv.vercel.app" />
-      <meta property="twitter:image" content="https://pavilion-nv.app/og.jpg" />
+      <meta name="twitter:image" content="https://pavilion-nv.app/og.jpg" />
     </>
   )
 }
