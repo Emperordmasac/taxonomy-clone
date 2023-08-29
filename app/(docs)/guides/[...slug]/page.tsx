@@ -1,19 +1,74 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import { allGuides } from "contentlayer/generated"
 
-import { allGuides } from "contentlayer/generated";
+import { getTableOfContents } from "@/lib/toc"
+import { Icons } from "@/components/icons"
+import { Mdx } from "@/components/mdx"
+import { DocsPageHeader } from "@/components/page-header"
+import { DashboardTableOfContents } from "@/components/toc"
+import "@/styles/mdx.css"
+import { Metadata } from "next"
 
-import { getTableOfContents } from "@/lib/toc";
-import { Mdx } from "@/components/docs/mdx";
-import { DashboardTableOfContents } from "@/components/docs/toc";
-import { DocsPageHeader } from "@/components/docs/page-header";
-import { Icons } from "@/components/icons";
-import "@/styles/mdx.css";
+import { absoluteUrl } from "@/lib/utils"
 
 interface GuidePageProps {
   params: {
-    slug: string[];
-  };
+    slug: string[]
+  }
+}
+
+async function getGuideFromParams(params) {
+  const slug = params?.slug?.join("/")
+  const guide = allGuides.find((guide) => guide.slugAsParams === slug)
+
+  if (!guide) {
+    null
+  }
+
+  return guide
+}
+
+export async function generateMetadata({
+  params,
+}: GuidePageProps): Promise<Metadata> {
+  const guide = await getGuideFromParams(params)
+
+  if (!guide) {
+    return {}
+  }
+
+  const url = process.env.NEXT_PUBLIC_APP_URL
+
+  const ogUrl = new URL(`${url}/api/og`)
+  ogUrl.searchParams.set("heading", guide.title)
+  ogUrl.searchParams.set("type", "Guide")
+  ogUrl.searchParams.set("mode", "dark")
+
+  return {
+    title: guide.title,
+    description: guide.description,
+    openGraph: {
+      title: guide.title,
+      description: guide.description,
+      type: "article",
+      url: absoluteUrl(guide.slug),
+      images: [
+        {
+          url: ogUrl.toString(),
+          width: 1200,
+          height: 630,
+          alt: guide.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: guide.title,
+      description: guide.description,
+      images: [ogUrl.toString()],
+    },
+  }
 }
 
 export async function generateStaticParams(): Promise<
@@ -21,18 +76,17 @@ export async function generateStaticParams(): Promise<
 > {
   return allGuides.map((guide) => ({
     slug: guide.slugAsParams.split("/"),
-  }));
+  }))
 }
 
 export default async function GuidePage({ params }: GuidePageProps) {
-  const slug = params?.slug?.join("/");
-  const guide = allGuides.find((guide) => guide.slugAsParams === slug);
+  const guide = await getGuideFromParams(params)
 
   if (!guide) {
-    notFound();
+    notFound()
   }
 
-  const toc = await getTableOfContents(guide.body.raw);
+  const toc = await getTableOfContents(guide.body.raw)
 
   return (
     <main className="relative py-6 lg:grid lg:grid-cols-[1fr_300px] lg:gap-10 lg:py-10 xl:gap-20">
@@ -56,5 +110,5 @@ export default async function GuidePage({ params }: GuidePageProps) {
         </div>
       </div>
     </main>
-  );
+  )
 }

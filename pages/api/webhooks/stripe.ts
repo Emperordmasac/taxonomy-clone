@@ -1,9 +1,9 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import Stripe from 'stripe'
-import rawBody from 'raw-body'
+import { NextApiRequest, NextApiResponse } from "next"
+import rawBody from "raw-body"
+import Stripe from "stripe"
 
-import { stripe } from '@/lib/stripe'
-import { db } from '@/lib/db'
+import { db } from "@/lib/db"
+import { stripe } from "@/lib/stripe"
 
 export const config = {
   api: {
@@ -14,10 +14,10 @@ export const config = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const body = await rawBody(req)
-  const signature = req.headers['stripe-signature']
+  const signature = req.headers["stripe-signature"] as string
 
   let event: Stripe.Event
 
@@ -25,7 +25,7 @@ export default async function handler(
     event = stripe.webhooks.constructEvent(
       body,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET,
+      process.env.STRIPE_WEBHOOK_SECRET || ""
     )
   } catch (error) {
     return res.status(400).send(`Webhook Error: ${error.message}`)
@@ -33,10 +33,10 @@ export default async function handler(
 
   const session = event.data.object as Stripe.Checkout.Session
 
-  if (event.type === 'checkout.session.completed') {
+  if (event.type === "checkout.session.completed") {
     // Retrieve the subscription details from Stripe.
     const subscription = await stripe.subscriptions.retrieve(
-      session.subscription as string,
+      session.subscription as string
     )
 
     // Update the user stripe into in our database.
@@ -44,23 +44,23 @@ export default async function handler(
     // the subscription id and customer id.
     await db.user.update({
       where: {
-        id: session.metadata.userId,
+        id: session?.metadata?.userId,
       },
       data: {
         stripeSubscriptionId: subscription.id,
         stripeCustomerId: subscription.customer as string,
         stripePriceId: subscription.items.data[0].price.id,
         stripeCurrentPeriodEnd: new Date(
-          subscription.current_period_end * 1000,
+          subscription.current_period_end * 1000
         ),
       },
     })
   }
 
-  if (event.type === 'invoice.payment_succeeded') {
+  if (event.type === "invoice.payment_succeeded") {
     // Retrieve the subscription details from Stripe.
     const subscription = await stripe.subscriptions.retrieve(
-      session.subscription as string,
+      session.subscription as string
     )
 
     // Update the price id and set the new period end.
@@ -71,7 +71,7 @@ export default async function handler(
       data: {
         stripePriceId: subscription.items.data[0].price.id,
         stripeCurrentPeriodEnd: new Date(
-          subscription.current_period_end * 1000,
+          subscription.current_period_end * 1000
         ),
       },
     })

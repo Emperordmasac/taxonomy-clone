@@ -1,5 +1,5 @@
-import { siteConfig } from "@/config/site";
-import { Icons } from "@/components/icons";
+import { siteConfig } from "@/config/site"
+import { Icons } from "@/components/icons"
 
 export function SiteFooter() {
   return (
@@ -15,7 +15,7 @@ export function SiteFooter() {
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              pavilion
+              shadcn
             </a>
             . Hosted on{" "}
             <a
@@ -52,5 +52,5 @@ export function SiteFooter() {
         </p>
       </div>
     </footer>
-  );
+  )
 }

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
-
 import * as z from "zod"
+
 import { withMethods } from "@/lib/api-middlewares/with-methods"
 import { withPost } from "@/lib/api-middlewares/with-post"
 import { db } from "@/lib/db"
@@ -14,6 +14,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           id: req.query.postId as string,
         },
       })
+
       return res.status(204).end()
     } catch (error) {
       return res.status(500).end()
@@ -29,8 +30,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         },
       })
 
+      if (!post) {
+        throw new Error("Post not found.")
+      }
+
       const body = postPatchSchema.parse(req.body)
 
+      // TODO: Implement sanitization for content.
       await db.post.update({
         where: {
           id: post.id,

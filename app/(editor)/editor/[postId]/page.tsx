@@ -1,11 +1,10 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation"
+import { Post, User } from "@prisma/client"
 
-import { Post, User } from "@prisma/client";
-import { db } from "@/lib/db";
-import { getCurrentUser } from "@/lib/session";
-import { authOptions } from "@/lib/auth";
-
-import { Editor } from "@/components/dashboard/editor";
+import { authOptions } from "@/lib/auth"
+import { db } from "@/lib/db"
+import { getCurrentUser } from "@/lib/session"
+import { Editor } from "@/components/editor"
 
 async function getPostForUser(postId: Post["id"], userId: User["id"]) {
   return await db.post.findFirst({
@@ -13,24 +12,24 @@ async function getPostForUser(postId: Post["id"], userId: User["id"]) {
       id: postId,
       authorId: userId,
     },
-  });
+  })
 }
 
 interface EditorPageProps {
-  params: { postId: string };
+  params: { postId: string }
 }
 
 export default async function EditorPage({ params }: EditorPageProps) {
-  const user = await getCurrentUser();
+  const user = await getCurrentUser()
 
   if (!user) {
-    redirect(authOptions.pages.signIn);
+    redirect(authOptions?.pages?.signIn || "/login")
   }
 
-  const post = await getPostForUser(params.postId, user.id);
+  const post = await getPostForUser(params.postId, user.id)
 
   if (!post) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -42,5 +41,5 @@ export default async function EditorPage({ params }: EditorPageProps) {
         published: post.published,
       }}
     />
-  );
+  )
 }

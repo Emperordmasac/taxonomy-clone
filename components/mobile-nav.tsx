@@ -1,19 +1,19 @@
-import * as React from "react";
-import Link from "next/link";
+import * as React from "react"
+import Link from "next/link"
+import { useLockBody } from "@/hooks/use-lock-body"
 
-import { MainNavItem } from "types";
-import { cn } from "@/lib/utils";
-import { useLockBody } from "@/hooks/use-lock-body";
-import { Icons } from "./icons";
-import { siteConfig } from "@/config/site";
+import { MainNavItem } from "types"
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons"
 
 interface MobileNavProps {
-  items: MainNavItem[];
-  children?: React.ReactNode;
+  items: MainNavItem[]
+  children?: React.ReactNode
 }
 
 export function MobileNav({ items, children }: MobileNavProps) {
-  useLockBody();
+  useLockBody()
 
   return (
     <div
@@ -32,7 +32,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
               key={index}
               href={item.disabled ? "#" : item.href}
               className={cn(
-                "flex w-full items-center rounded-md px-2 py-2 text-sm font-medium hover:underline",
+                "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline",
                 item.disabled && "cursor-not-allowed opacity-60"
               )}
             >
@@ -43,5 +43,5 @@ export function MobileNav({ items, children }: MobileNavProps) {
         {children}
       </div>
     </div>
-  );
+  )
 }

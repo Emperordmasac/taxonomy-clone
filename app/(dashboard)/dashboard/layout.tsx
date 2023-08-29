@@ -1,22 +1,22 @@
-import { notFound } from "next/navigation";
+import { notFound } from "next/navigation"
 
-import { getCurrentUser } from "@/lib/session";
-import { DashboardNav } from "@/components/dashboard/nav";
-import { UserAccountNav } from "@/components/dashboard/user-account-nav";
-import { dashboardConfig } from "@/config/dashboard";
-import { MainNav } from "@/components/main-nav";
+import { dashboardConfig } from "@/config/dashboard"
+import { getCurrentUser } from "@/lib/session"
+import { MainNav } from "@/components/main-nav"
+import { DashboardNav } from "@/components/nav"
+import { UserAccountNav } from "@/components/user-account-nav"
 
 interface DashboardLayoutProps {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 }
 
 export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
-  const user = await getCurrentUser();
+  const user = await getCurrentUser()
 
   if (!user) {
-    return notFound();
+    return notFound()
   }
 
   return (
@@ -42,5 +42,5 @@ export default async function DashboardLayout({
         </main>
       </div>
     </div>
-  );
+  )
 }
