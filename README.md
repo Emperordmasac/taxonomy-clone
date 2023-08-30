@@ -32,7 +32,7 @@ An open source application built using the new router, server components and eve
 - [x] ~Build marketing pages~
 - [x] ~Subscriptions using Stripe~
 - [x] ~Responsive styles~
-- [ ] Add OG image for blog using @vercel/og
+- [x] Add OG image for blog using @vercel/og
 - [ ] Dark mode
 
 ## Known Issues
