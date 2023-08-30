@@ -38,6 +38,13 @@ export async function generateMetadata({
     return {}
   }
 
+  const url = process.env.NEXT_PUBLIC_APP_URL
+
+  const ogUrl = new URL(`${url}/api/og`)
+  ogUrl.searchParams.set("heading", guide.title)
+  ogUrl.searchParams.set("type", "Guide")
+  ogUrl.searchParams.set("mode", "dark")
+
   return {
     title: guide.title,
     description: guide.description,
@@ -46,11 +53,20 @@ export async function generateMetadata({
       description: guide.description,
       type: "article",
       url: absoluteUrl(guide.slug),
+      images: [
+        {
+          url: ogUrl.toString(),
+          width: 1200,
+          height: 630,
+          alt: guide.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: guide.title,
       description: guide.description,
+      images: [ogUrl.toString()],
     },
   }
 }
