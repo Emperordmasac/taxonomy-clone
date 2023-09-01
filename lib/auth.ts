@@ -4,6 +4,7 @@ import EmailProvider from "next-auth/providers/email"
 import GitHubProvider from "next-auth/providers/github"
 import { Client } from "postmark"
 
+import { env } from "@/env.mjs"
 import { db } from "@/lib/db"
 
 // TODO: Move env vars to env a la t3.
@@ -24,8 +25,8 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID || "",
-      clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
+      clientId: env.GITHUB_CLIENT_ID,
+      clientSecret: env.GITHUB_CLIENT_SECRET,
     }),
     // EmailProvider({
     //   server: {
